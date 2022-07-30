@@ -10,4 +10,4 @@ phases:
     - echo "Deployed to S3"
 artifacts:
   files:
-    - '**/*'
+    - 's3://portfolio-artifacts-3007/pipeline-loading-sou/BuildArtif/Daj8m27'
