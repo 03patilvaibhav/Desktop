@@ -7,6 +7,8 @@ phases:
  
   post_build:
     commands:
+    files:
+    -'s3://portfolio-artifacts-3007/pipeline-loading-sou/BuildArtif/k5WVSDv'
     - echo "Deployed to S3"
 artifacts:
   files:
