@@ -1,5 +1,5 @@
 version: 0.2
-
+os: linux
 phases:
   build:
     commands:
@@ -8,8 +8,22 @@ phases:
   post_build:
     commands:
     files:
-    -'s3://portfolio-artifacts-3007/pipeline-loading-sou/BuildArtif/k5WVSDv'
+  - source: /index.html
+    destination: /var/www/html/
     - echo "Deployed to S3"
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: root
+    - location: scripts/start_server
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 300
+      runas: root
+
 artifacts:
   files:
     - '**/*'
